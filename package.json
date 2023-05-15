@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/PhuongAnhNhu/udemy-cypress#readme",
   "devDependencies": {
+    "@cypress/xpath": "^2.0.3",
     "cypress": "^12.11.0"
   }
 }
