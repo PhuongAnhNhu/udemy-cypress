@@ -23,7 +23,7 @@ describe("My first test suite", function () {
                 const productName = $element.find(".product-name").text();
                 if (productName.includes("Cashews")) {
                     // need to use wrap cause $element is a promise
-                    cy.wrap($element).find(`button`).click();
+                    cy.wrap($element).find(`button`).click({ force: true });
                 }
             });
     });
