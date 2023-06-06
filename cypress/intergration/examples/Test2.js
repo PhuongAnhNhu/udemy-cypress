@@ -26,5 +26,11 @@ describe("My first test suite", function () {
                     cy.wrap($element).find(`button`).click({ force: true });
                 }
             });
+       /**  const logo= cy.get('.brand');
+        cy.log(logo.text()); */ 
+        // it will not work because cypress is asynchron by nature
+        cy.get('.brand').then(function(logo) {
+            cy.log(logo.text())
+        })
     });
 });
