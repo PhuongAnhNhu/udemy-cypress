@@ -9,8 +9,8 @@ describe("My first test suite", function () {
         cy.xpath('//div[@class="product"]').should("have.length", 4);
 
         // Parent child chaining
-        // cy.get('.products').find('.product').should('have.length', 4);
-        cy.xpath('//div[@class="products"]/div[@class="product"]').should("have.length", 4);
+        cy.get('.products').as('productVariable'); // alias .products as peoductVariable 
+        cy.get('@productVariable').find('.product').should('have.length', 4);
 
         /** get element by index nummer */
         // cy.get('.products').find('.product').eq(1).contains('ADD TO CART').click();
@@ -26,11 +26,14 @@ describe("My first test suite", function () {
                     cy.wrap($element).find(`button`).click({ force: true });
                 }
             });
-       /**  const logo= cy.get('.brand');
+
+       /** it will not work because cypress is asynchron by nature
+         const logo= cy.get('.brand');
         cy.log(logo.text()); */ 
-        // it will not work because cypress is asynchron by nature
         cy.get('.brand').then(function(logo) {
             cy.log(logo.text())
         })
+
+        cy.get('.brand').should('have.text', 'GREENKART');
     });
 });
